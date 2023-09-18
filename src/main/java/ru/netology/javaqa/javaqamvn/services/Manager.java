@@ -33,10 +33,10 @@ public class Manager {
 
     public Poster[] findLast() {
         int resultLimit;
-        if (afisha.length < limit) {
-            resultLimit = afisha.length;
-        } else {
+        if (afisha.length >= limit) {
             resultLimit = limit;
+        } else {
+            resultLimit = afisha.length;
         }
         Poster[] reversed = new Poster[resultLimit];
         for (int i = 0; i < reversed.length; i++) {
