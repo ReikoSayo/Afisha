@@ -2,6 +2,7 @@ package ru.netology.javaqa.javaqamvn.services;
 
 import lombok.*;
 
+@Data
 public class Manager {
     private Poster[] afisha = new Poster[0];
     @Getter
@@ -15,8 +16,8 @@ public class Manager {
     }
 
     public Poster[] findAll() {
-        for (int i = 0; i < afisha.length; i++) {
-            System.out.println(afisha[i]);
+        for (Poster s : afisha) {
+            System.out.println(s);
         }
         return afisha;
     }
@@ -31,12 +32,15 @@ public class Manager {
     }
 
     public Poster[] findLast() {
-        Poster[] reversed = new Poster[afisha.length];
+        int resultLimit;
+        if (afisha.length < limit) {
+            resultLimit = afisha.length;
+        } else {
+            resultLimit = limit;
+        }
+        Poster[] reversed = new Poster[resultLimit];
         for (int i = 0; i < reversed.length; i++) {
             reversed[i] = afisha[afisha.length - 1 - i];
-        }
-        for (int i = 0; i < limit; i++) {
-            System.out.println(reversed[i]);
         }
         return reversed;
     }

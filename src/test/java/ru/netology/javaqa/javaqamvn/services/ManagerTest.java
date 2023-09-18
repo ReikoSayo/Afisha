@@ -14,6 +14,13 @@ class ManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    void findLastEmptyTest() {
+        Poster[] expected = {};
+        Poster[] actual = afisha.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
     Poster film1 = new Poster(1, "Bloodshot", "action", "https://upload.wikimedia.org/wikipedia/ru/9/9d/Bloodshot_poster.jpg");
 
     @Test
@@ -21,6 +28,14 @@ class ManagerTest {
         afisha.save(film1);
         Poster[] expected = {film1};
         Poster[] actual = afisha.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    void findLastOneTest() {
+        afisha.save(film1);
+        Poster[] expected = {film1};
+        Poster[] actual = afisha.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -88,14 +103,13 @@ class ManagerTest {
 
     @Test
     void findLastTest() {
-        afisha.setLimit(3);
+        afisha.setLimit(2);
         afisha.save(film1);
         afisha.save(film2);
         afisha.save(film3);
-        Poster[] expected = {film3, film2, film1};
+        Poster[] expected = {film3, film2};
         Poster[] actual = afisha.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
-
     }
 }
